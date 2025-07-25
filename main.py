@@ -1,21 +1,47 @@
-from flask import Flask, render_template, request
+import os
+import sys
+# DON'T CHANGE THIS !!!
+sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
 
-app = Flask('app')
+from flask import Flask, send_from_directory, render_template
+from flask_cors import CORS
+from src.models.user import db
+from src.routes.user import user_bp
+from src.routes.wildfire import wildfire_bp
 
-@app.route('/')
-def hello_world():
-    print(request.headers)
-    return render_template(
-        'index.html',
-        user_id=request.headers['X-Replit-User-Id'],
-        user_name=request.headers['X-Replit-User-Name'],
-        user_roles=request.headers['X-Replit-User-Roles'],
-        user_bio=request.headers['X-Replit-User-Bio'],
-        user_profile_image=request.headers['X-Replit-User-Profile-Image'],
-        user_teams=request.headers['X-Replit-User-Teams'],
-        user_url=request.headers['X-Replit-User-Url']
-    )
+app = Flask(__name__, static_folder=os.path.join(os.path.dirname(__file__), 'static'))
+app.config['SECRET_KEY'] = 'asdf#FGSgvasgf$5$WGT'
 
-if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=8080)
+# Enable CORS for all routes
+CORS(app)
 
+app.register_blueprint(user_bp, url_prefix='/api')
+app.register_blueprint(wildfire_bp, url_prefix='/api/wildfire')
+
+# uncomment if you need to use database
+app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{os.path.join(os.path.dirname(__file__), 'database', 'app.db')}"
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db.init_app(app)
+with app.app_context():
+    db.create_all()
+
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def serve(path):
+    static_folder_path = app.static_folder
+    if static_folder_path is None:
+        return "Static folder not configured", 404
+
+    # If the path exists in static folder, serve it (CSS, JS, images, etc.)
+    if path != "" and os.path.exists(os.path.join(static_folder_path, path)):
+        return send_from_directory(static_folder_path, path)
+    else:
+        # Otherwise, render 'index.html' from templates folder
+        try:
+            return render_template('index.html')
+        except Exception as e:
+            return f"Template error: {str(e)}", 500
+
+
+if __name__ == '__main__':
+     app.run(host='0.0.0.0', port=os.environ.get('PORT', 5000), debug=True)
