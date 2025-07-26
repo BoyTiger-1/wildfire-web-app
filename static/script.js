@@ -190,14 +190,17 @@ class WildfirePredictionApp {
             const coordinates = this.getCoordinates();
             
             // Prepare request data
-            const requestData = {
+             // Prepare request data
+            let requestData = {
                 latitude: coordinates.latitude,
                 longitude: coordinates.longitude
             };
             
             // Add manual data if selected
             if (this.isManualData) {
-                requestData.manual_data = this.getManualData();
+                const manualData = this.getManualData();
+                // For manual endpoint, merge manual data directly into request
+                requestData = { ...requestData, ...manualData };
             }
             
             // Make API request
