@@ -113,27 +113,6 @@ The system uses a Random Forest classifier trained on synthetic data that consid
 - **High** (60-80%): Orange indicator
 - **Extreme** (> 80%): Red indicator
 
-## File Structure
-
-```
-wildfire-web-app/
-├── src/
-│   ├── main.py                 # Flask application entry point
-│   ├── wildfire_predictor.py   # Core prediction logic
-│   ├── routes/
-│   │   ├── wildfire.py         # API routes for predictions
-│   │   └── user.py             # User management routes
-│   ├── models/
-│   │   └── user.py             # Database models
-│   └── static/
-│       ├── index.html          # Frontend interface
-│       ├── styles.css          # Styling
-│       └── script.js           # Frontend JavaScript
-├── venv/                       # Virtual environment
-├── requirements.txt            # Python dependencies
-└── README.md                   # This file
-```
-
 ## Deployment
 
 For production deployment:
@@ -175,11 +154,4 @@ To modify or extend the system:
 3. **Model improvements**: Update `wildfire_predictor.py` with new features or algorithms
 4. **API extensions**: Add new routes in `src/routes/` directory
 
-## License
-
-This is a demonstration system created for educational purposes.
-
-## Support
-
-For issues or questions about the system, please refer to the code comments and documentation within the source files.
 
