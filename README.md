@@ -32,6 +32,14 @@ A web-based wildfire risk prediction system powered by machine learning that pro
    ```bash
    pip install -r requirements.txt
    ```
+## Technology Stack
+
+- **Machine Learning**: Random Forest Classifier (scikit-learn)
+- **Backend**: Python
+- **Frontend**: HTML/CSS/JavaScript
+- **Key Libraries**: scikit-learn, pandas, NumPy, Geopy, Requests
+- **Deployment**: Render
+- **Data Sources**: NASA FIRMS (real-time), Synthetic Data (training), USGS Elevation Data
 
 ## Configuration
 
@@ -106,28 +114,20 @@ The system uses a Random Forest classifier trained on synthetic data that consid
 - **Vegetation factors**: NDVI (Normalized Difference Vegetation Index)
 - **Terrain factors**: Elevation and slope
 
+## Usage
+
+- Access the web interface at https://wildfire-web-app.onrender.com
+- Enter location coordinates (latitude/longitude) or use the map to select coordinates
+- Adjust environmental parameters or use current conditions
+- Click "Predict" to generate wildfire risk percentage
+- View results on interactive map
+
 ### Risk Levels
 
 - **Low** (< 30%): Green indicator
 - **Moderate** (30-60%): Yellow indicator  
 - **High** (60-80%): Orange indicator
 - **Extreme** (> 80%): Red indicator
-
-## Deployment
-
-For production deployment:
-
-1. **Use a production WSGI server** like Gunicorn:
-   ```bash
-   pip install gunicorn
-   gunicorn -w 4 -b 0.0.0.0:5000 src.main:app
-   ```
-
-2. **Configure a reverse proxy** (nginx, Apache) for better performance
-
-3. **Set up SSL/TLS** for secure connections
-
-4. **Configure environment variables** for API keys
 
 ## Limitations
 
