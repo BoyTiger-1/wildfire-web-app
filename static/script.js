@@ -296,7 +296,7 @@ const exampleLocations = [
     { name: 'Austin, TX', lat: 30.2672, lon: -97.7431 }
 ];
 
-// Add example location buttons (optional enhancement)
+// Add example location buttons
 function addExampleLocations() {
     const inputPanel = document.querySelector('.input-panel');
     const exampleDiv = document.createElement('div');
