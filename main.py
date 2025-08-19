@@ -44,8 +44,8 @@ def ai():
     result = None
     if request.method == 'POST':
         user_input = request.form.get('user_input')
-        # TODO: Add your AI logic here
-        result = f"Processed: {user_input}"  # placeholder
+
+        result = f"Processed: {user_input}" 
     return render_template('ai.html', result=result)
 
 # --- Serve static files ---
