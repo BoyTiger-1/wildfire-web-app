@@ -31,7 +31,7 @@ with app.app_context():
     db.create_all()
 
 # --- Routes for HTML pages ---
-@app.route('/')
+@app.route('/home')
 def home():
     return render_template('index.html')
 
