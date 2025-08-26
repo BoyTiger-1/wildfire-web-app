@@ -2,6 +2,10 @@
 
 A web-based wildfire risk prediction system powered by machine learning that provides real-time wildfire risk assessment for locations within the continental United States.
 
+## Inspiration
+Two years ago, my community was reminded of how close we all are to the devastating impacts of wildfires. A massive fire had broken out near a town just an hour away from us. For days, the air was thick with smoke, evacuation alerts loomed, and my family and neighbors prepared in case we had to leave our homes behind. Although we were fortunate not to evacuate, the fear and uncertainty left a lasting impression on me. Furthermore, the LA wildfires erupted with terrifying intensity, destroying entire neighborhoods, displacing thousands of families, and showing how quickly a spark can lead to a disaster. Seeing these events happen so close to home, I realized that climate change and wildfire risk are not distant issues, but they’re immediate, life-altering threats. This inspired me to act, to use the skills I’m developing in artificial intelligence and data science to create something meaningful. By building a Wildfire Risk Prediction AI, I want to contribute to early detection and prevention, helping communities prepare before it’s too late. My goal is to turn the anxiety and helplessness of those moments into something constructive, with technology that empowers people and protects lives.
+
+
 ## Features
 
 - **Location Input**: Enter coordinates manually or select locations on an interactive map
